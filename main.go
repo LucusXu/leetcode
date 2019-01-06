@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 import "leetcode/sort"
+import "leetcode/linkList"
 
 // 排序算法
 func testSort() {
@@ -21,7 +22,14 @@ func testSearch() {
 	fmt.Printf("%v", res)
 }
 
+// 查找算法
+func testJCircle() {
+	var last = linkList.JCircle(10, 5);
+	fmt.Printf("%d\n", last)
+}
+
 func main() {
 	// testSort()
-	testSearch()
+	// testSearch()
+	testJCircle()
 }
