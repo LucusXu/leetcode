@@ -22,14 +22,22 @@ func testSearch() {
 	fmt.Printf("%v", res)
 }
 
-// 查找算法
+// 约瑟夫环算法
 func testJCircle() {
 	var last = linkList.JCircle(10, 5);
+	fmt.Printf("%d\n", last)
+}
+
+// 约瑟夫环算法
+func testLru() {
+	var array = []int{1,3,7,6,4,2,8,9,10,5}
+	var last = linkList.Lru(array, 10, 4);
 	fmt.Printf("%d\n", last)
 }
 
 func main() {
 	// testSort()
 	// testSearch()
-	testJCircle()
+	// testJCircle()
+	testLru()
 }

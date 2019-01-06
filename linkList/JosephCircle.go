@@ -5,11 +5,6 @@ import (
 	// "fmt"
 )
 
-type LinkNode struct {
-	value int
-	next *LinkNode
-}
-
 func createCircle(n int) *LinkNode {
 	if n <= 0 {
 		return nil
