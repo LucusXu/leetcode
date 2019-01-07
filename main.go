@@ -3,6 +3,7 @@ package main
 import "fmt"
 import "leetcode/sort"
 import "leetcode/linkList"
+import "leetcode/string"
 
 // 排序算法
 func testSort() {
@@ -35,9 +36,16 @@ func testLru() {
 	fmt.Printf("%d\n", last)
 }
 
+// 测试ip转换成整形
+func testIp2Long() {
+	var ipLong1, ipLong2 = string.Ip2Long("107.111.56.89");
+	fmt.Printf("%d\n", ipLong1, ipLong2)
+}
+
 func main() {
 	// testSort()
 	// testSearch()
 	// testJCircle()
-	testLru()
+	// testLru()
+	testIp2Long()
 }
