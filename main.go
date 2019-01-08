@@ -39,7 +39,8 @@ func testLru() {
 // 测试ip转换成整形
 func testIp2Long() {
 	var ipLong1, ipLong2 = string.Ip2Long("107.111.56.89");
-	fmt.Printf("%d\n", ipLong1, ipLong2)
+	var ip = string.Long2Ip(ipLong1);
+	fmt.Printf("%d\n", ipLong1, ipLong2, ip)
 }
 
 func main() {
