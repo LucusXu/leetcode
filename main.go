@@ -56,11 +56,18 @@ func testUniqCount() {
 	fmt.Printf("%d\n", c)
 }
 
+// 测试计数
+func testMoreThanK() {
+	var array = []int{1, 2, 2, 2, 2, 3,4,5,5,5,6,8,9,10}
+	sort.MoreThanK(array, 14, 3);
+}
+
 func main() {
 	// testSort()
 	// testSearch()
 	// testJCircle()
 	// testLru()
 	// testRollback()
-	testUniqCount()
+	// testUniqCount()
+	testMoreThanK()
 }
