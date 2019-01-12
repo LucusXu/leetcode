@@ -5,14 +5,14 @@ import (
 	"fmt"
 )
 
+// 初始化创建一个跳表
 func Create(array []int, length, n int) *LinkNode {
 	if array == nil || length <= 0 || n <= 0 {
 		return nil
 	}
 	head := new(LinkNode)
 
-	record := make(map[int]bool, 0)
-	fmt.Printf("%v", record)
+	fmt.Printf("%v", head)
 	return head
 }
 

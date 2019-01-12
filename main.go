@@ -43,10 +43,24 @@ func testIp2Long() {
 	fmt.Printf("%d\n", ipLong1, ipLong2, ip)
 }
 
+// 测试选择链表
+func testRollback() {
+	var array = []int{1,3,5,6,8,9,10,15,22,33,34,40,43,46}
+	linkList.Rollback(array, 14, 4);
+}
+
+// 测试计数
+func testUniqCount() {
+	var array = []int{-5, -5, -4, -1, 1, 2, 3,4,5,6,8}
+	var c = sort.UniqCount(array, 11);
+	fmt.Printf("%d\n", c)
+}
+
 func main() {
 	// testSort()
 	// testSearch()
 	// testJCircle()
 	// testLru()
-	testIp2Long()
+	// testRollback()
+	testUniqCount()
 }
