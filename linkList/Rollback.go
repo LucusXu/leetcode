@@ -67,3 +67,85 @@ func rollback(head *LinkNode, k int) *LinkNode {
 	}
 	return prev
 }
+
+// 翻转链表
+func Reverse(head, left *LinkNode) *LinkNode {
+	if head == nil || left == nil {
+		return nil
+	}
+	// 只有一个节点了
+	if left.next.next == nil {
+		return head
+	}
+	cur := left
+	prev := left
+	p := left.next
+	for ; p.next != nil; {
+		prev = p
+		p = p.next
+	}
+	prev.next = nil
+	p.next = cur.next
+	cur.next = p
+	// 递归
+	head = Reverse(head, p)
+	return head
+}
+
+// 在单链表上对折
+func Fold(head *LinkNode) *LinkNode {
+	if head == nil {
+		return nil
+	}
+	// 1.先找到中点, 快慢指针
+	mid := Mid(head)
+	// 2.翻转右边链表
+	head = Reverse(head, mid)
+	// 3.归并左右半个链表
+	head = Merge(head, mid)
+	return head
+}
+
+// 归并链表左右各半
+func Merge(head, mid *LinkNode) *LinkNode {
+	if head == nil || mid == nil {
+		return nil
+	}
+
+	p := head
+	q := mid.next
+
+	for ; q.next != nil; {
+		mid.next = q.next
+		q.next = p.next
+		p.next = q
+		p = p.next.next
+		q = mid.next
+	}
+	return head
+}
+
+// 在单链表上对折
+func Mid(head *LinkNode) *LinkNode {
+	if head == nil {
+		return nil
+	}
+	p := head
+	var len = 0;
+	for ; p.next != nil; {
+		len++
+		p = p.next
+	}
+	var min = len / 2
+	// 快慢指针
+	fast := head
+	var i = 1
+	for ;; {
+		if i >= min {
+			break
+		}
+		i++
+		fast = fast.next
+	}
+	return fast
+}
