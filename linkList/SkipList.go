@@ -16,10 +16,6 @@ func Create(array []int, length, n int) *LinkNode {
 	return head
 }
 
-func Search(array []int, length, n int) bool {
-	return true
-}
-
 func Insert(array []int, length, n int) bool {
 	return true
 }
