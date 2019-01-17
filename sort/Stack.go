@@ -41,3 +41,10 @@ func (s *Stack)Pop() * Item {
 	s.lock.Unlock()
 	return &item
 }
+
+/**
+ * 栈的大小
+ */
+func (s *Stack)Size() int {
+	return len(s.items)
+}
