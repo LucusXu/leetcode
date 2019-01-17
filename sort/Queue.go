@@ -1,7 +1,6 @@
 package sort
 
 import (
-	"github.com/cheekybits/genny/generic"
 	"sync"
 	// 队列用链表实现
 	"container/list"
