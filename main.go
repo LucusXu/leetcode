@@ -3,7 +3,9 @@ package main
 import "fmt"
 import "leetcode/sort"
 import "leetcode/linkList"
-import "leetcode/string"
+import (
+	"leetcode/string"
+)
 
 // 排序算法
 func testSort() {
@@ -69,5 +71,5 @@ func main() {
 	// testLru()
 	// testRollback()
 	// testUniqCount()
-	testMoreThanK()
+	// testMoreThanK()
 }
