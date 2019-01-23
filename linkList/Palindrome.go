@@ -5,6 +5,34 @@ import (
 	"fmt"
 )
 
+func CreateLink(str string) *LinkNode {
+	if len(str) <= 0 {
+		return nil
+	}
+	head := new(LinkNode)
+	head.value = str[0]
+	head.next = nil
+	if len(str) > 1 {
+		i := 1
+		p := head
+		for ; i < len(str); i++ {
+			tmp := new(LinkNode)
+			tmp.value = str[i]
+			p.next = tmp
+			p = p.next
+		}
+		p.next = nil
+	}
+
+	p := head
+	for ;p != nil; {
+		fmt.Println("%s", p.value)
+		p = p.next
+	}
+	fmt.Println("\n")
+	return head
+}
+
 func Check(head *LinkNode) bool {
 	if head == nil {
 		return true
