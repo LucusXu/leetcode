@@ -34,7 +34,8 @@ func Lru(array []int, length, n int) *LinkNode {
 				record[i] = true
 				for ; p.next != nil ; {
 					if p.next.next == nil {
-						record[p.next.value] = false
+						idx := (p.next.value).(int)
+						record[idx] = false
 						p.next = nil
 						break
 					}

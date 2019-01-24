@@ -6,6 +6,6 @@ import (
 )
 
 type LinkNode struct {
-	value int
+	value interface{}
 	next *LinkNode
 }

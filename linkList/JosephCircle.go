@@ -38,7 +38,7 @@ func JCircle(n, k int) int {
 				break
 			}
 			if head.next == head {
-				return head.value
+				return (head.value).(int)
 			}
 			head = head.next
 		}

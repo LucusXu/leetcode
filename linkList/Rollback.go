@@ -171,7 +171,7 @@ func MergeSort(head1, head2 *LinkNode) *LinkNode {
 	p := head1
 	q := head2
 	head := new(LinkNode)
-	if p.value <= q.value {
+	if (p.value).(int) <= (q.value).(int) {
 		head = head1
 		p = head1.next
 	} else {
@@ -180,7 +180,7 @@ func MergeSort(head1, head2 *LinkNode) *LinkNode {
 	}
 	x := head
 	for ; p != nil && q != nil; {
-		if p.value <= q.value {
+		if (p.value).(int) <= (q.value).(int) {
 			x.next = p
 			x = p
 			p = p.next
