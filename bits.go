@@ -42,7 +42,40 @@ func calBits(n int) int {
     return sum
 }
 
+func findMinSum(arr []int, sum int) int {
+    l := len(arr)
+    if l == 0 {
+        return 0
+    }
+    if l == 1 && arr[0] >= sum {
+        return 1
+    }
+    // 返回值
+    res := 0
+    p := 0
+    q := p
+    // 临时和
+    tmpSum := arr[0]
+    for p < l && q < l {
+        if tmpSum >= sum {
+            if res == 0 || q-p+1 < res {
+                res = q - p + 1
+            }
+            tmpSum = tmpSum - arr[p]
+            p++
+        } else {
+            q++
+            if q >= l {
+                break
+            }
+            tmpSum = tmpSum + arr[q]
+        }
+    }
+    return res
+}
+
 func main() {
-    var A = []int{0, 1, 2, 3, 4, 5, 6, 7, 8}
-    sortByBits(A)
+    var A = []int{4, 5, 1, 2, 6}
+    ret := findMinSum(A, 1)
+    fmt.Println("%d", ret)
 }
