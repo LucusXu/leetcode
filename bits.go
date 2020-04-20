@@ -1,5 +1,10 @@
 package main
-import "fmt"
+
+import (
+    "fmt"
+    //"time"
+    "time"
+)
 
 func sortByBits(arr []int) []int {
     var bitmap = make(map[int][]int, 0)
@@ -74,8 +79,65 @@ func findMinSum(arr []int, sum int) int {
     return res
 }
 
-func main() {
-    var A = []int{4, 5, 1, 2, 6}
-    ret := findMinSum(A, 1)
-    fmt.Println("%d", ret)
+type BaseArticle struct {
+    id int
+    title string
+    content string
 }
+
+type UgcArtile struct {
+    id int
+}
+
+func BaseInfo(id int) BaseArticle {
+    fmt.Println("%d", id)
+    return BaseArticle{
+        id : id,
+    }
+}
+
+func UGCInfo(id int) UgcArtile {
+    // fmt.Println("%d", id)
+    return UgcArtile{
+        id : id,
+    }
+}
+
+func insert(id int, ch chan int) {
+    ch <- id
+}
+
+func output(ch chan int) {
+    for {
+        select {
+        case id := <-ch:
+            go BaseInfo(id)
+            go UGCInfo(id)
+        }
+    }
+
+}
+
+func main() {
+    var A = []int{1,2,3,4,5,6,7,8,9,10}
+    // 管道非阻塞
+    ch := make(chan int, 10)
+    for i := 0; i < len(A); i++ {
+       go insert(A[i], ch)
+       // ch <- A[i]
+    }
+    // close(ch)
+
+    // time.Sleep(3 * time.Second)
+
+    go output(ch)
+    time.Sleep(time.Millisecond * 200)
+}
+
+
+// qq, name, score
+
+// select qq, count(*) as c, avg(score) as s from t group by qq having c>1 order by s desc;
+
+
+// cat access.log |awk -F':' '{print $12}' | uniq -c |sort -nr
