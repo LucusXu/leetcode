@@ -31,6 +31,7 @@ func main() {
 		go insertCh1(ch, i)
 		// go insertCh(ch, &wg, i)
 	}
+	defer close(ch)
 	// wg.Wait()
 	t := time.NewTimer(time.Millisecond * 20)
 	for {
