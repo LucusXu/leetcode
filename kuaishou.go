@@ -25,27 +25,33 @@ func insertCh1(ch chan int,  val int) {
 
 func main() {
 	ch := make(chan int, 1000)
+	defer close(ch)
+
+	go func() {
+		t := time.NewTimer(time.Millisecond * 20)
+		for {
+			select {
+			case <-t.C:
+				return
+			case v := <-ch:
+				// fmt.Println("%d", v)
+				go out(v)
+				break
+			default:
+				fmt.Println("aaa")
+				break
+			}
+		}
+	}()
+
 	// var wg sync.WaitGroup
 	for i := 0; i < 1000; i++ {
 		// wg.Add(1)
 		go insertCh1(ch, i)
+		time.Sleep(time.Millisecond)
 		// go insertCh(ch, &wg, i)
 	}
-	defer close(ch)
 	// wg.Wait()
-	t := time.NewTimer(time.Millisecond * 20)
-	for {
-		select {
-		case <-t.C:
-			return
-		case v := <-ch:
-			// fmt.Println("%d", v)
-			go out(v)
-			break
-		default:
-			break
-		}
-	}
 
 	c := make(chan os.Signal)
 	signal.Notify(c, syscall.SIGHUP, syscall.SIGTERM, syscall.SIGILL, syscall.SIGINT)
