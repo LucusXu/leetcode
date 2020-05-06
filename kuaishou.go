@@ -36,10 +36,8 @@ func main() {
 			case v := <-ch:
 				// fmt.Println("%d", v)
 				go out(v)
-				break
 			default:
 				fmt.Println("aaa")
-				break
 			}
 		}
 	}()
