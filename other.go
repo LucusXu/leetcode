@@ -35,6 +35,35 @@ func Bst2List(root *TreeNode, prev **TreeNode) {
 	}
 }
 
+type ListNode struct{
+	val int
+	next *ListNode
+}
+
+func listToBst(head *ListNode) *TreeNode {
+	var size int = 0
+	var curr = head
+	// 统计长度
+	for curr != nil {
+		size++
+		curr = curr.next
+	}
+	curr = head
+	return buildTree(curr, size)
+}
+
+func buildTree(list *ListNode, size int) *TreeNode {
+	if size == 0 {
+		return nil
+	}
+	var root = &TreeNode{}
+	root.left = buildTree(list, size / 2)
+	root.val = list.val
+	list = list.next
+	root.right = buildTree(list, size - size / 2)
+	return root
+}
+
 func main() {
 	root := &TreeNode{left:nil, right:nil, val: 1}
 	convert(root)
