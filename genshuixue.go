@@ -24,9 +24,22 @@ func writeFirstProgram(p Programer) {
 type GoProgramer struct {}
 type PhpProgramer struct {}
 
+func dosomething(p interface{}) {
+
+	switch v:=p.(type) {
+	case int:
+		fmt.Println("int", v)
+	case string:
+		fmt.Println("string", v)
+	default:
+		fmt.Println("unkonwn type")
+	}
+}
 func main() {
 	gop := new(GoProgramer)
 	phper := &PhpProgramer{}
 	writeFirstProgram(gop)
 	writeFirstProgram(phper)
+	dosomething(10)
+	dosomething("lucus")
 }
