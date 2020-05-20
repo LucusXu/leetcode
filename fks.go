@@ -35,7 +35,7 @@ func getFirstCommonNode(root, p, q *TNode) *TNode {
 
 func distance(root, p *TNode) int {
 	if root == p {
-		return 0
+		return 1
 	}
 	// 计算层
 	var level = 0
@@ -45,20 +45,14 @@ func distance(root, p *TNode) int {
 
 	for len(queue) > 0 {
 		size := len(queue)
+		level++
 		for i := 0; i < size; i++ {
 			tmp := queue[0]
 			queue = queue[1:]
-			level++
 			if tmp.left != nil {
-				if tmp.left == p {
-					return level
-				}
 				queue = append(queue, tmp.left)
 			}
 			if tmp.right != nil {
-				if tmp.right == p {
-					return level
-				}
 				queue = append(queue, tmp.right)
 			}
 		}
